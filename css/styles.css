@@ -1,0 +1,84 @@
+body {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+    margin-top: 50px;
+    background-color: aquamarine;
+}
+
+h1{
+    color: orange;
+}
+
+.espacio{
+    margin: 20px 0;
+}
+
+.btn {
+    padding: 1rem 2rem;
+    font-size: 20px;
+    font-weight: 700;
+    background: rgb(255, 255, 255);
+    color: yellowgreen;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    border-bottom: 2px solid blueviolet;
+    border-right: 2px solid blueviolet;
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+    transition-duration: 1s;
+    transition-property: border-top, border-left, border-bottom, border-right,
+      box-shadow;
+  }
+  
+  .btn:hover {
+    border-top: 2px solid blueviolet;
+    border-left: 2px solid blueviolet;
+    border-bottom: 2px solid rgb(238, 103, 238);
+    border-right: 2px solid rgb(238, 103, 238);
+    box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px,
+      rgba(240, 46, 170, 0.2) 15px 15px;
+  }
+  
+
+#tablero {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#crono{
+font-size:larger;
+}
+
+.tarjeta{
+    width: 100px;
+    height: 100px;
+    background-color: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+}
+
+.tarjeta.volteada {
+    background-color: #fff;
+}
+
+.tarjeta img {
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.tarjeta.volteada img {
+    display: block;
+}
+
+.tarjeta.volteada {
+    background-color: #fff;
+}
