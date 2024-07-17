@@ -9,13 +9,13 @@ let tarjetasVolteadas = [];
 let tarjetasEmparejadas = [];
 let crono;
 let tiempoInicio;
+let btnIniciar = $('#iniciar');
 
 function barajar(array) {
     array.sort(() => Math.random() - 0.5);
 }
 
 function crearTablero() {
-    iniciarCrono();
     barajar(images);
     for (let i = 0; i < images.length; i++) {
         const tarjeta = document.createElement('div');
@@ -59,6 +59,8 @@ function verificarPareja() {
     tarjetasVolteadas = [];
 }
 
+btnIniciar.on('click',iniciarCrono)
+
 function iniciarCrono() {
     tiempoInicio = Date.now();
     crono = setInterval(actualizarCrono, 1000);
@@ -81,6 +83,6 @@ function reiniciarJuego() {
     tarjetasVolteadas = [];
     crearTablero();
 }
-document.getElementById('reiniciar').addEventListener('click', reiniciarJuego);
+//document.getElementById('reiniciar').addEventListener('click', reiniciarJuego);
 
 crearTablero();
