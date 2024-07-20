@@ -10,6 +10,9 @@ let tarjetasEmparejadas = [];
 let crono;
 let tiempoInicio;
 let btnIniciar = $('#iniciar');
+let juegoIniciado = false;
+let juegoEnCurso = false;
+let juegoTerminado= false; 
 
 function barajar(array) {
     array.sort(() => Math.random() - 0.5);
@@ -31,6 +34,9 @@ function crearTablero() {
 }
 
 function voltearTarjeta() {
+    if(!juegoIniciado){
+        return alert('Presiona el boton INICIAR JUEGO');
+    };
     if (tarjetasVolteadas.length < 2 && !this.classList.contains('volteada')) {
         this.classList.add('volteada');
         this.querySelector('img').style.display = 'block';  
@@ -47,8 +53,12 @@ function verificarPareja() {
     if (tarjeta1.dataset.valor === tarjeta2.dataset.valor) {
         tarjetasEmparejadas.push(tarjeta1, tarjeta2);
         if (tarjetasEmparejadas.length === images.length) {
+            alert(`¡Genial! terminaste el juego en: ${document.getElementById('crono').textContent} \nPodras hacerlo en menos tiempo`);
+            btnIniciar.text('Reiniciar Juego');
             detenerCrono();
-            alert(`¡Ganaste! Tiempo total: ${document.getElementById('crono').textContent}`);
+            if(!juegoTerminado){
+                return alert('Presiona Reiniciar Juego')
+            }
         }
     } else {
         tarjeta1.classList.remove('volteada');
@@ -59,7 +69,20 @@ function verificarPareja() {
     tarjetasVolteadas = [];
 }
 
-btnIniciar.on('click',iniciarCrono)
+btnIniciar.on('click', () =>{
+    if(!juegoEnCurso){
+        iniciarJuego();
+    }else{
+        reiniciarJuego();
+    }
+});
+
+function iniciarJuego(){
+    iniciarCrono();
+    btnIniciar.text('Reiniciar Juego');
+    juegoIniciado= true;
+    juegoEnCurso = true;
+}
 
 function iniciarCrono() {
     tiempoInicio = Date.now();
@@ -82,6 +105,8 @@ function reiniciarJuego() {
     tarjetasEmparejadas = [];
     tarjetasVolteadas = [];
     crearTablero();
+    iniciarCrono();
+    juegoIniciado = true;
 }
 //document.getElementById('reiniciar').addEventListener('click', reiniciarJuego);
 
