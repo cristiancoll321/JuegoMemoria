@@ -56,9 +56,6 @@ function verificarPareja() {
             alert(`¡Genial! terminaste el juego en: ${document.getElementById('crono').textContent} \nPodras hacerlo en menos tiempo`);
             btnIniciar.text('Reiniciar Juego');
             detenerCrono();
-            if(!juegoTerminado){
-                return alert('Presiona Reiniciar Juego')
-            }
         }
     } else {
         tarjeta1.classList.remove('volteada');
@@ -108,6 +105,5 @@ function reiniciarJuego() {
     iniciarCrono();
     juegoIniciado = true;
 }
-//document.getElementById('reiniciar').addEventListener('click', reiniciarJuego);
 
 crearTablero();
